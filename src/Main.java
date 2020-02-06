@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeSet;
+import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args){
@@ -8,24 +9,25 @@ public class Main {
         String command;
         TreeSet<Flat> flats = new TreeSet<Flat>();
 
-        Consumer r = new Consumer(1); // все что связано с Consumer пока что хрень
+//        Consumer<Integer> printer = x-> System.out.printf("%d долларов \n", x);
         HashMap<String, Consumer> commandMap = new HashMap<String, Consumer>();
-        commandMap.put("help", r);
-        commandMap.put("info", r);
-        commandMap.put("show", r);
-        commandMap.put("add", r);
-        commandMap.put("update", r);
-        commandMap.put("remove_by_id", r);
-        commandMap.put("clear", r);
-        commandMap.put("save", r);
-        commandMap.put("execute_script", r);
-//        commandMap.put("exit", r);
-        commandMap.put("add_if_min", r);
-        commandMap.put("remove_greater", r);
-        commandMap.put("remove_lower", r);
-        commandMap.put("group_counting_by_creation_date", r);
-        commandMap.put("filter_contains_name", r);
-        commandMap.put("print_field_ascending_number_of_rooms", r);
+
+        commandMap.put("help", );
+        commandMap.put("info", );
+        commandMap.put("show", );
+        commandMap.put("add", );
+        commandMap.put("update", );
+        commandMap.put("remove_by_id", );
+        commandMap.put("clear", );
+        commandMap.put("save", );
+        commandMap.put("execute_script", );
+//        commandMap.put("exit", );
+        commandMap.put("add_if_min", );
+        commandMap.put("remove_greater", );
+        commandMap.put("remove_lower", );
+        commandMap.put("group_counting_by_creation_date", );
+        commandMap.put("filter_contains_name", );
+        commandMap.put("print_field_ascending_number_of_rooms", );
 
         do {
             command = sc.nextLine();
