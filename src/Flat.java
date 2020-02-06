@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Flat {
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -9,4 +11,18 @@ public class Flat {
     private View view; //Поле может быть null
     private Transport transport; //Поле может быть null
     private House house; //Поле может быть null
+
+//    сделать автоматическую генирацию переменной
+    public Flat(Integer id, String name, Coordinates coordinates, long area, Long numberOfRooms, Furnish furnish, View view, Transport transport, House house) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+//        this.creationDate = creationDate;
+        this.area = area;
+        this.numberOfRooms = numberOfRooms;
+        this.furnish = furnish;
+        this.view = view;
+        this.transport = transport;
+        this.house = house;
+    }
 }
