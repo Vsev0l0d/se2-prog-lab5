@@ -1,7 +1,5 @@
-import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeSet;
-import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args){
@@ -9,31 +7,58 @@ public class Main {
         String command;
         TreeSet<Flat> flats = new TreeSet<Flat>();
 
-
-        HashMap<String, Consumer> commandMap = new HashMap<String, Consumer>();
-
-        commandMap.put("help", );
-        commandMap.put("info", );
-        commandMap.put("show", );
-        commandMap.put("add", );
-        commandMap.put("update", );
-        commandMap.put("remove_by_id", );
-
-        Consumer<TreeSet> clear = x-> x.clear();
-        commandMap.put("clear", clear);
-
-        commandMap.put("save", );
-        commandMap.put("execute_script", );
-//        commandMap.put("exit", );
-        commandMap.put("add_if_min", );
-        commandMap.put("remove_greater", );
-        commandMap.put("remove_lower", );
-        commandMap.put("group_counting_by_creation_date", );
-        commandMap.put("filter_contains_name", );
-        commandMap.put("print_field_ascending_number_of_rooms", );
-
         do {
             command = sc.nextLine();
+            switch (command){
+                case ("help"):
+
+                    break;
+                case ("info"):
+
+                    break;
+                case ("show"):
+
+                    break;
+                case ("add"):
+
+                    break;
+                case ("update"):
+
+                    break;
+                case ("remove_by_id"):
+
+                    break;
+                case ("clear"):
+                    flats.clear();
+                    break;
+                case ("save"):
+
+                    break;
+                case ("execute_script"):
+
+                    break;
+                case ("add_if_min"):
+
+                    break;
+                case ("remove_greater"):
+
+                    break;
+                case ("remove_lower"):
+
+                    break;
+                case ("group_counting_by_creation_date"):
+
+                    break;
+                case ("filter_contains_name"):
+
+                    break;
+                case ("print_field_ascending_number_of_rooms"):
+
+                    break;
+                default:
+
+                    break;
+            }
         } while(!command.equals("exit"));
     }
 }
