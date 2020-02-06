@@ -12,12 +12,11 @@ public class Flat {
     private Transport transport; //Поле может быть null
     private House house; //Поле может быть null
 
-//    сделать автоматическую генирацию переменной
     public Flat(Integer id, String name, Coordinates coordinates, long area, Long numberOfRooms, Furnish furnish, View view, Transport transport, House house) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
-//        this.creationDate = creationDate;
+        this.creationDate = LocalDate.now();
         this.area = area;
         this.numberOfRooms = numberOfRooms;
         this.furnish = furnish;
