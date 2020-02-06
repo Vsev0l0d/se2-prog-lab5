@@ -9,7 +9,7 @@ public class Main {
         String command;
         TreeSet<Flat> flats = new TreeSet<Flat>();
 
-//        Consumer<Integer> printer = x-> System.out.printf("%d долларов \n", x);
+
         HashMap<String, Consumer> commandMap = new HashMap<String, Consumer>();
 
         commandMap.put("help", );
@@ -18,7 +18,10 @@ public class Main {
         commandMap.put("add", );
         commandMap.put("update", );
         commandMap.put("remove_by_id", );
-        commandMap.put("clear", );
+
+        Consumer<TreeSet> clear = x-> x.clear();
+        commandMap.put("clear", clear);
+
         commandMap.put("save", );
         commandMap.put("execute_script", );
 //        commandMap.put("exit", );
