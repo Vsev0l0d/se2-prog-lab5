@@ -13,7 +13,7 @@ public class Main {
             command = sc.nextLine();
             switch (command){
                 case ("help"):
-                    try(FileReader reader = new FileReader(System.getProperty("user.dir")+"\\src\\HelpAboutTeams.txt"))
+                    try(FileReader reader = new FileReader(System.getProperty("user.dir")+"\\src\\commands\\HelpAboutTeams.txt"))
                     {
                         int c;
                         while((c=reader.read())!=-1){
