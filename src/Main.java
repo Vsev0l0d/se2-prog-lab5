@@ -3,15 +3,19 @@ import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        String command;
         TreeSet<Flat> flats = new TreeSet<Flat>();
         BankTeams bankTeams = new BankTeams();
+        Scanner sc = new Scanner(System.in);
+        String command;
 
-        do {
+        while (sc.hasNext()){
             command = sc.nextLine();
-            bankTeams.commandMap.get(command).accept(flats);
-        } while(!command.equals("exit"));
-        sc.close();
+
+            if (bankTeams.commandMap.get(command) != null){
+                bankTeams.commandMap.get(command).accept(flats);
+            } else {
+                System.out.println("я не знаю такой команды, воспользуйтесь командой help");
+            }
+        }
     }
 }
