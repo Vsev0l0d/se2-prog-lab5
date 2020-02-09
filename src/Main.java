@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -10,7 +11,7 @@ public class Main {
     }
 
     public static void main(String[] args){
-        TreeSet<Flat> flats = new TreeSet<Flat>();
+        TreeSet<Flat> flats = new TreeSet<Flat>(Comparator.comparing(o -> o.getArea()));
         BankTeams bankTeams = new BankTeams();
         Scanner sc = new Scanner(System.in);
 

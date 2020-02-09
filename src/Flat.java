@@ -24,4 +24,8 @@ public class Flat {
         this.transport = transport;
         this.house = house;
     }
+
+    public long getArea(){
+        return area;
+    }
 }
