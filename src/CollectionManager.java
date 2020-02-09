@@ -1,10 +1,9 @@
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.TreeSet;
 
 public abstract class CollectionManager {
 
-    public static void help(TreeSet<Flat> o) {
+    public static void help(MyCollection o, String[] arg) {
         try(FileReader reader = new FileReader(System.getProperty("user.dir")+"\\src\\HelpAboutTeams.txt"))
         {
             int c;
@@ -17,37 +16,41 @@ public abstract class CollectionManager {
         }
     }
 
-    public static void info(TreeSet<Flat> o){}
+    public static void info(MyCollection o, String[] arg){
+        System.out.println("Тип коллекции: " + o.getTypeCollection().getName());
+        System.out.println("Дата инициализации коллекции: " + o.getCreationDate());
+        System.out.println("Количество элементов коллекции: " + o.size());
+    }
 
-    public static void show(TreeSet<Flat> o){}
+    public static void show(MyCollection o, String[] arg){}
 
-    public static void add(TreeSet<Flat> o){}
+    public static void add(MyCollection o, String[] arg){}
 
-    public static void update(TreeSet<Flat> o){}
+    public static void update(MyCollection o, String[] arg){}
 
-    public static void removeById(TreeSet<Flat> o){}
+    public static void removeById(MyCollection o, String[] arg){}
 
-    public static void clear(TreeSet<Flat> o){
+    public static void clear(MyCollection o, String[] arg) {
         o.clear();
     }
 
-    public static void save(TreeSet<Flat> o){}
+    public static void save(MyCollection o, String[] arg){}
 
-    public static void executeScript(TreeSet<Flat> o){}
+    public static void executeScript(MyCollection o, String[] arg){}
 
-    public static void exit(TreeSet<Flat> o){
+    public static void exit(MyCollection o, String[] arg){
         System.exit(0);
     }
 
-    public static void addIfMin(TreeSet<Flat> o){}
+    public static void addIfMin(MyCollection o, String[] arg){}
 
-    public static void removeGreater(TreeSet<Flat> o){}
+    public static void removeGreater(MyCollection o, String[] arg){}
 
-    public static void removeLower(TreeSet<Flat> o){}
+    public static void removeLower(MyCollection o, String[] arg){}
 
-    public static void groupCountingByCreationDate(TreeSet<Flat> o){}
+    public static void groupCountingByCreationDate(MyCollection o, String[] arg){}
 
-    public static void filterContainsName(TreeSet<Flat> o){}
+    public static void filterContainsName(MyCollection o, String[] arg){}
 
-    public static void printFieldAscendingNumberOfRooms(TreeSet<Flat> o){}
+    public static void printFieldAscendingNumberOfRooms(MyCollection o, String[] arg){}
 }

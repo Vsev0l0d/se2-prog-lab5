@@ -1,26 +1,19 @@
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.TreeSet;
 
 public class Main {
-    private static String inputLine;
-    private static String[] inputWord;
-
-    public static String[] getInputWord() {
-        return inputWord;
-    }
-
     public static void main(String[] args){
-        TreeSet<Flat> flats = new TreeSet<Flat>(Comparator.comparing(o -> o.getArea()));
+        MyCollection collection = new MyCollection();
         BankTeams bankTeams = new BankTeams();
         Scanner sc = new Scanner(System.in);
 
         while (sc.hasNext()){
-            inputLine = sc.nextLine();
-            inputWord = inputLine.split("\\s");
+            String[] arguments = sc.nextLine().split("\\s");
+            String command = arguments[0];
+            arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
-            if (bankTeams.commandMap.get(inputWord[0]) != null){
-                bankTeams.commandMap.get(inputWord[0]).execute(flats);
+            if (bankTeams.commandMap.get(command) != null){
+                bankTeams.commandMap.get(command).execute(collection, arguments);
             } else {
                 System.out.println("я не знаю такой команды, воспользуйтесь командой help");
             }
