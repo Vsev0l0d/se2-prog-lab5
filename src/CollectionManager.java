@@ -61,9 +61,16 @@ public abstract class CollectionManager {
 
     public static void addIfMin(MyCollection o, String[] arg){}
 
-    public static void removeGreater(MyCollection o, String[] arg){}
+    public static void removeGreater(MyCollection o, String[] arg){
+//        Flat f = null; // надо считывать из консоли
+//        o.tailSet(f, false).forEach(o::remove);
+    }
 
-    public static void removeLower(MyCollection o, String[] arg){}
+    public static void removeLower(MyCollection o, String[] arg){
+//        Flat f = null; // надо считывать из консоли
+//        o.headSet(f, false).forEach(o::remove);
+
+    }
 
     public static void groupCountingByCreationDate(MyCollection o, String[] arg){}
 
