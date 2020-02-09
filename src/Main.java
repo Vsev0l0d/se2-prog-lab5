@@ -6,13 +6,15 @@ public class Main {
         TreeSet<Flat> flats = new TreeSet<Flat>();
         BankTeams bankTeams = new BankTeams();
         Scanner sc = new Scanner(System.in);
-        String command;
+        String inputLine;
+        String[] inputWord;
 
         while (sc.hasNext()){
-            command = sc.nextLine();
+            inputLine = sc.nextLine();
+            inputWord = inputLine.split("\\s");
 
-            if (bankTeams.commandMap.get(command) != null){
-                bankTeams.commandMap.get(command).accept(flats);
+            if (bankTeams.commandMap.get(inputWord[0]) != null){
+                bankTeams.commandMap.get(inputWord[0]).accept(flats);
             } else {
                 System.out.println("я не знаю такой команды, воспользуйтесь командой help");
             }
