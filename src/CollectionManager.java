@@ -28,7 +28,24 @@ public abstract class CollectionManager {
 
     public static void update(MyCollection o, String[] arg){}
 
-    public static void removeById(MyCollection o, String[] arg){}
+    public static void removeById(MyCollection o, String[] arg){
+        if (arg.length < 1) {
+            System.out.println("Нужен id");
+            return;
+        }
+        int id;
+        try {
+            id = Integer.parseInt(arg[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("id должен быть натуральным числом");
+            return;
+        }
+        try {
+            o.toList().stream().filter(x -> x.getId() == id).forEach(o::remove);
+        } catch (ClassCastException e) {
+            System.out.println("Элемент с таким id не найден");
+        }
+    }
 
     public static void clear(MyCollection o, String[] arg) {
         o.clear();

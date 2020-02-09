@@ -28,4 +28,8 @@ public class Flat {
     public long getArea(){
         return area;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }
