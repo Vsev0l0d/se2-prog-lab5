@@ -19,7 +19,7 @@ public class Main {
             inputWord = inputLine.split("\\s");
 
             if (bankTeams.commandMap.get(inputWord[0]) != null){
-                bankTeams.commandMap.get(inputWord[0]).accept(flats);
+                bankTeams.commandMap.get(inputWord[0]).execute(flats);
             } else {
                 System.out.println("я не знаю такой команды, воспользуйтесь командой help");
             }

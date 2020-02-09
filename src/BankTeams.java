@@ -1,8 +1,7 @@
 import java.util.HashMap;
-import java.util.function.Consumer;
 
 public class BankTeams {
-    HashMap<String, Consumer> commandMap = new HashMap<String, Consumer>();
+    HashMap<String, MyTypeConsumer> commandMap = new HashMap<String, MyTypeConsumer>();
     public BankTeams(){
         commandMap.put("help", CollectionManager::help);
         commandMap.put("info", CollectionManager::info);
