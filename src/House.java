@@ -1,7 +1,7 @@
 public class House {
-    private String name; //Поле может быть null
-    private Long year; //Значение поля должно быть больше 0
-    private Long numberOfFlatsOnFloor; //Значение поля должно быть больше 0
+    private String name;
+    private Long year;
+    private Long numberOfFlatsOnFloor;
 
     public House(String name, Long year, Long numberOfFlatsOnFloor) {
         this.name = name;

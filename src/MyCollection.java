@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 public class MyCollection extends TreeSet{
-    private TreeSet<Flat> flats = new TreeSet<Flat>(Comparator.comparing(Flat::getArea));
+    private TreeSet<Flat> flats = new TreeSet<Flat>();
     private java.time.LocalDate creationDate;
 
     public MyCollection() {

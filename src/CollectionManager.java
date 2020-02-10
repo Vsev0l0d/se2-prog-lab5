@@ -24,7 +24,14 @@ public abstract class CollectionManager {
 
     public static void show(MyCollection o, String[] arg){}
 
-    public static void add(MyCollection o, String[] arg){}
+    public static void add(MyCollection o, String[] arg){
+       boolean e = o.add(FlatReader.readFlat(System.in));
+       if (e){
+           System.out.println("\nЭлемент успешно добавлен\n");
+       } else {
+           System.out.println("\nТакой элемент уже есть\n");
+       }
+    }
 
     public static void update(MyCollection o, String[] arg){}
 
@@ -62,13 +69,13 @@ public abstract class CollectionManager {
     public static void addIfMin(MyCollection o, String[] arg){}
 
     public static void removeGreater(MyCollection o, String[] arg){
-//        Flat f = null; // надо считывать из консоли
-//        o.tailSet(f, false).forEach(o::remove);
+        Flat f = FlatReader.readFlat(System.in);
+        o.tailSet(f, false).forEach(o::remove);
     }
 
     public static void removeLower(MyCollection o, String[] arg){
-//        Flat f = null; // надо считывать из консоли
-//        o.headSet(f, false).forEach(o::remove);
+        Flat f = FlatReader.readFlat(System.in);
+        o.headSet(f, false).forEach(o::remove);
 
     }
 

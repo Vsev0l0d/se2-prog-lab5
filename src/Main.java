@@ -15,7 +15,9 @@ public class Main {
             if (bankTeams.commandMap.get(command) != null){
                 bankTeams.commandMap.get(command).execute(collection, arguments);
             } else {
-                System.out.println("я не знаю такой команды, воспользуйтесь командой help");
+                if (!command.equals("")) {
+                    System.out.println("я не знаю такой команды, воспользуйтесь командой help");
+                }
             }
         }
     }
