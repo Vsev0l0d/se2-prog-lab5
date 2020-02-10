@@ -1,8 +1,8 @@
 import java.util.HashMap;
 
-public class BankTeams {
+public class BankCommand {
     HashMap<String, MyTypeConsumer> commandMap = new HashMap<String, MyTypeConsumer>();
-    public BankTeams(){
+    public BankCommand(){
         commandMap.put("help", CollectionManager::help);
         commandMap.put("info", CollectionManager::info);
         commandMap.put("show", CollectionManager::show);

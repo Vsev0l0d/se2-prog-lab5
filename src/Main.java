@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         MyCollection collection = new MyCollection();
-        BankTeams bankTeams = new BankTeams();
+        BankCommand bankTeams = new BankCommand();
         Scanner sc = new Scanner(System.in);
 
         while (sc.hasNext()){

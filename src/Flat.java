@@ -11,9 +11,10 @@ public class Flat {
     private View view; //Поле может быть null
     private Transport transport; //Поле может быть null
     private House house; //Поле может быть null
+    private static int counterId = 0;
 
-    public Flat(Integer id, String name, Coordinates coordinates, long area, Long numberOfRooms, Furnish furnish, View view, Transport transport, House house) {
-        this.id = id;
+    public Flat(String name, Coordinates coordinates, long area, Long numberOfRooms, Furnish furnish, View view, Transport transport, House house) {
+        this.id = counterId++;
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = LocalDate.now();

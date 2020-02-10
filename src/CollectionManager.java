@@ -4,7 +4,7 @@ import java.io.IOException;
 public abstract class CollectionManager {
 
     public static void help(MyCollection o, String[] arg) {
-        try(FileReader reader = new FileReader(System.getProperty("user.dir")+"\\src\\HelpAboutTeams.txt"))
+        try(FileReader reader = new FileReader(System.getProperty("user.dir")+"\\src\\HelpAboutCommand.txt"))
         {
             int c;
             while((c=reader.read())!=-1){
