@@ -16,10 +16,20 @@ public abstract class FlatReader {
         return null;
     }
 
+    //пока хрень
     public static Object verificationReader(InputStream is){
-        Scanner sc = new Scanner(is);
-        boolean resultOfChecking = false;
-
+//        Scanner sc = new Scanner(is);
+//        Object o;
+//        boolean resultOfChecking = false;
+//        while (!resultOfChecking){
+//            try {
+//                o = sc.nextLine();
+//                resultOfChecking = true;
+//            } catch (NumberFormatException e) {
+//                System.out.println("id должен быть натуральным числом");
+//                return;
+//            }
+//        }
 
         return null;
     }
