@@ -1,5 +1,5 @@
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class MyCollection extends TreeSet{
@@ -18,8 +18,8 @@ public class MyCollection extends TreeSet{
         return flats.getClass();
     }
 
-    public List<Flat> toList() {
-        return (List<Flat>) flats;
+    public Set<Flat> toSet() {
+        return (Set<Flat>) flats;
     }
 
     public void display(Flat flat) {

@@ -23,7 +23,9 @@ public abstract class CollectionManager {
     }
 
     public static void show(MyCollection o, String[] arg){
-        o.toList().stream().forEach(o::display);
+        if (o.size() != 0){
+            o.toSet().forEach(o::display);
+        } else System.out.println("Коллекция не содержит элементов");
     }
 
     public static void add(MyCollection o, String[] arg){
@@ -67,7 +69,7 @@ public abstract class CollectionManager {
             return;
         }
         try {
-            o.toList().stream().filter(x -> x.getId() == id).forEach(o::remove);
+            o.toSet().stream().filter(x -> x.getId() == id).forEach(o::remove);
         } catch (ClassCastException e) {
             System.out.println("Элемент с таким id не найден");
         }

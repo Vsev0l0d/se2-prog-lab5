@@ -13,7 +13,7 @@ public abstract class FlatReader {
         View view = viewCheckingReader("Введите вид из квартиры (PARK, NORMAL, GOOD, TERRIBLE): ", is);
         Transport transport = transportCheckingReader("Введите транспот (FEW, NONE, LITTLE, NORMAL, ENOUGH): ", is);;
         String nameHouse = nameCheckingReader("Введите название дома: ", is);
-        Long yearHouse = numberCheckingReader("Ввудите год построки дома: ", is);
+        Long yearHouse = numberCheckingReader("Ввeдите год построки дома: ", is);
         Long numberOfFlatsOnFloor = numberCheckingReader("Введите количество квартир на этаже: ", is);
         return new Flat(name, new Coordinates(x,y), area, numberOfRooms, furnish, view, transport, new House(nameHouse, yearHouse, numberOfFlatsOnFloor));
     }
