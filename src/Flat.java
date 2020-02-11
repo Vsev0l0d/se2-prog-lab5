@@ -11,7 +11,7 @@ public class Flat implements Comparable<Flat>{
     private View view;
     private Transport transport;
     private House house;
-    private static int counterId = 0;
+    private static int counterId = 1;
 
     public Flat(String name, Coordinates coordinates, long area, Long numberOfRooms, Furnish furnish, View view, Transport transport, House house) {
         this.id = counterId++;
@@ -32,6 +32,38 @@ public class Flat implements Comparable<Flat>{
 
     public Integer getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public Long getNumberOfRooms() {
+        return numberOfRooms;
+    }
+
+    public Furnish getFurnish() {
+        return furnish;
+    }
+
+    public View getView() {
+        return view;
+    }
+
+    public Transport getTransport() {
+        return transport;
+    }
+
+    public House getHouse() {
+        return house;
     }
 
     @Override

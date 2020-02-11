@@ -8,4 +8,16 @@ public class House {
         this.year = year;
         this.numberOfFlatsOnFloor = numberOfFlatsOnFloor;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Long getYear() {
+        return year;
+    }
+
+    public Long getNumberOfFlatsOnFloor() {
+        return numberOfFlatsOnFloor;
+    }
 }
