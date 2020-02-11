@@ -9,12 +9,12 @@ public class Main {
 
         while (sc.hasNext()){
             String[] arguments = sc.nextLine().split("\\s");
-            if (arguments.length == 0) continue;
+            if (arguments.length == 0) continue; // разобраться с \n
             String command = arguments[0];
             arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
             if (bankTeams.commandMap.get(command) != null){
-                bankTeams.commandMap.get(command).execute(collection, arguments);
+                bankTeams.commandMap.get(command).accept(collection, arguments);
             } else {
                 System.out.println("я не знаю такой команды, воспользуйтесь командой help");
             }
