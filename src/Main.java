@@ -9,7 +9,8 @@ public class Main {
 
         while (sc.hasNext()){
             String[] arguments = sc.nextLine().split("\\s");
-            if (arguments.length == 0) continue; // разобраться с \n
+            if (arguments.length == 0) continue;
+            if (arguments[0].equals("")) continue;
             String command = arguments[0];
             arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
