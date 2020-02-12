@@ -8,7 +8,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (sc.hasNext()){
-            String[] arguments = sc.nextLine().split(" ");
+            String[] arguments = sc.nextLine().trim().split(" ");
             if (arguments.length == 0) continue;
             if (arguments[0].equals("")) continue;
             String command = arguments[0];

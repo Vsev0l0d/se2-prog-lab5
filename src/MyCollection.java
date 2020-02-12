@@ -3,7 +3,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class MyCollection extends TreeSet{
-    private TreeSet<Flat> flats = new TreeSet<Flat>();
+    private TreeSet<Flat> flats = new TreeSet();
     private java.time.LocalDate creationDate;
 
     public MyCollection() {
@@ -19,7 +19,7 @@ public class MyCollection extends TreeSet{
     }
 
     public Set<Flat> toSet() {
-        return (Set<Flat>) flats;
+        return flats;
     }
 
     public void display(Flat flat) {
