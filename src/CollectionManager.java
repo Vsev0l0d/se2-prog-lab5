@@ -23,8 +23,11 @@ public abstract class CollectionManager {
     }
 
     public static void show(MyCollection o, String[] arg){
-        if (o.size() != 0){
-            o.toSet().forEach(o::display);
+        if (!o.isEmpty()){
+            for (Object i : o){
+            o.display((Flat) i);
+            }
+//            o.toSet().forEach(o::display); // хотелось бы выяснить, почему так ничего не выводит
         } else System.out.println("Коллекция не содержит элементов");
     }
 
