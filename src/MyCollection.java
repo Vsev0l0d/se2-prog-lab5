@@ -18,7 +18,7 @@ public class MyCollection extends TreeSet{
         return flats.getClass();
     }
 
-    public Set<Flat> toSet() {
+    public Set<Flat> toMySet() {
         return flats;
     }
 

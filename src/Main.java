@@ -15,7 +15,7 @@ public class Main {
             arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
             if (bankTeams.commandMap.get(command) != null){
-                bankTeams.commandMap.get(command).accept(collection, arguments);
+                bankTeams.commandMap.get(command).accept(collection, System.in, arguments);
             } else {
                 System.out.println("я не знаю такой команды, воспользуйтесь командой help");
             }

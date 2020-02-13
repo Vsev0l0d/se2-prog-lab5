@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public abstract class FlatReader {
     public static Flat readFlat(InputStream is){
-        String buffer;
         String name = nameCheckingReader("Введите название квартиры: ", is);
         Long x = numberCheckingReader("Введите подъезд: ", is);
         long y = numberCheckingReader("Введите этаж: ", is);

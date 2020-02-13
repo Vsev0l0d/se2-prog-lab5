@@ -1,8 +1,8 @@
+import java.io.InputStream;
 import java.util.HashMap;
-import java.util.function.BiConsumer;
 
 public class BankCommand {
-    HashMap<String, BiConsumer<MyCollection, String[]>> commandMap = new HashMap<>();
+    HashMap<String, MyConsumer<MyCollection, InputStream, String[]>> commandMap = new HashMap();
     public BankCommand(){
         commandMap.put("help", CollectionManager::help);
         commandMap.put("info", CollectionManager::info);
