@@ -146,13 +146,29 @@ public abstract class CollectionManager {
     }
 
     public static void groupCountingByCreationDate(MyCollection o, InputStream is, String[] arg){
-//        if(checksForExtraArguments(arg)) return;
+        if(checksForExtraArguments(arg)) return;
+        if (o.isEmpty()){
+            System.out.println("Коллекция не содеждит элементов");
+            return;
+        }
+        HashMap<java.time.LocalDate, MyCollection> groupMap = new HashMap<>();
+        for (Object i : o){
+            if (groupMap.get(((Flat)i).getCreationDate()) == null){
+                MyCollection x = new MyCollection();
+                x.add(i);
+                groupMap.put(((Flat)i).getCreationDate(), x);
+            } else groupMap.get(((Flat) i).getCreationDate()).add(i);
+        }
+        for (Map.Entry<java.time.LocalDate, MyCollection> entry : groupMap.entrySet()){
+            System.out.println("    Элементы созданные " + entry.getKey() + " :\n");
+            show(entry.getValue(), is, arg);
+        }
     }
 
     public static void filterContainsName(MyCollection o, InputStream is, String[] arg){
         if (!o.isEmpty()){
             if (arg.length < 1) {
-                System.out.println("Нужена подстрока");
+                System.out.println("Нужна подстрока");
                 return;
             }
             String name = arg[0];
@@ -169,7 +185,23 @@ public abstract class CollectionManager {
     }
 
     public static void printFieldAscendingNumberOfRooms(MyCollection o, InputStream is, String[] arg){
-
+        if (arg.length < 1) {
+            System.out.println("Нужно значение numberOfRooms");
+            return;
+        }
+        long numberOfRooms;
+        try {
+            numberOfRooms = Long.parseLong(arg[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("Значение numberOfRooms должнo быть натуральным числом");
+            return;
+        }
+        ArrayList<Long> arrayListNumbersOfRooms = new ArrayList<>();
+        for (Object i : o){
+            if(((Flat)i).getNumberOfRooms() >= numberOfRooms) arrayListNumbersOfRooms.add(((Flat)i).getNumberOfRooms());
+        }
+        Collections.sort(arrayListNumbersOfRooms);
+        arrayListNumbersOfRooms.forEach(System.out::println);
     }
 
     private static boolean checksForExtraArguments(String[] arg){
