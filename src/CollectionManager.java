@@ -40,7 +40,35 @@ public abstract class CollectionManager {
        aadWithOutput(o, FlatReader.readFlat(is));
     }
 
-    public static void update(MyCollection o, InputStream is, String[] arg){}
+    public static void update(MyCollection o, InputStream is, String[] arg){
+        if (arg.length < 1) {
+            System.out.println("Нужен id");
+            return;
+        }
+        long id;
+        try {
+            id = Long.parseLong(arg[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("id должен быть натуральным числом");
+            return;
+        }
+        Flat flat = null;
+        for (Object i : o){
+            if(((Flat)i).getId() == id) flat = (Flat) i;
+        }
+        if(flat != null){
+            Flat f = FlatReader.readFlat(is);
+            flat.setName(f.getName());
+            flat.setCoordinates(f.getCoordinates());
+            flat.setArea(f.getArea());
+            flat.setNumberOfRooms(f.getNumberOfRooms());
+            flat.setFurnish(f.getFurnish());
+            flat.setView(f.getView());
+            flat.setTransport(f.getTransport());
+            flat.setHouse(f.getHouse());
+            System.out.println("\nЭлемент обновлен\n");
+        } else System.out.println("Элемент с таким id не найден");
+    }
 
     public static void removeById(MyCollection o, InputStream is, String[] arg){
         if (arg.length < 1) {
@@ -54,12 +82,12 @@ public abstract class CollectionManager {
             System.out.println("id должен быть натуральным числом");
             return;
         }
-        TreeSet<Flat> buffer = new TreeSet<>();
+        Flat flat = null;
         for (Object i : o){
-            if(((Flat)i).getId() == id) buffer.add((Flat) i);
+            if(((Flat)i).getId() == id) flat = (Flat) i;
         }
-        if(!buffer.isEmpty()){
-            buffer.forEach(x -> removeWithOutput(o, x));
+        if(flat != null){
+            removeWithOutput(o, flat);
         } else System.out.println("Элемент с таким id не найден");
     }
 

@@ -65,12 +65,10 @@ public abstract class FlatReader {
         while (!resultOfChecking){
             try {
                 String s = sc.nextLine().trim();
-                if (s.equals("")) return null;
                 o = Furnish.valueOf(s);
                 resultOfChecking = true;
             } catch (IllegalArgumentException e) {
                 System.out.println("не корректный ответ, воспользуйтесь списком в скобках");
-                System.out.println("если хотите оставить поле пустым, нажмите Enter");
             }
         }
         return o;

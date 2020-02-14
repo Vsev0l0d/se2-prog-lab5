@@ -66,6 +66,48 @@ public class Flat implements Comparable<Flat>{
         return house;
     }
 
+    public boolean setName(String name) {
+        if (name.equals("") || name == null) return false;
+        this.name = name;
+        return true;
+    }
+
+    public boolean setCoordinates(Coordinates coordinates) {
+        if (coordinates == null) return false;
+        this.coordinates = coordinates;
+        return true;
+    }
+
+    public boolean setArea(long area) {
+        if (area < 0) return false;
+        this.area = area;
+        return  true;
+    }
+
+    public boolean setNumberOfRooms(Long numberOfRooms) {
+        if (numberOfRooms < 0) return false;
+        this.numberOfRooms = numberOfRooms;
+        return true;
+    }
+
+    public boolean setFurnish(Furnish furnish) {
+        if (furnish == null) return false;
+        this.furnish = furnish;
+        return true;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+    }
+
+    public void setTransport(Transport transport) {
+        this.transport = transport;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
+    }
+
     @Override
     public int compareTo(Flat o) {
         return this.id - o.getId();
