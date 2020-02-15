@@ -1,7 +1,5 @@
-import javax.swing.text.html.HTMLDocument;
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public abstract class CollectionManager {
 
@@ -37,7 +35,7 @@ public abstract class CollectionManager {
 
     public static void add(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
-       aadWithOutput(o, FlatReader.readFlat(is));
+       aadWithOutput(o, FlatReader.readFlat(is, o));
     }
 
     public static void update(MyCollection o, InputStream is, String[] arg){
@@ -57,7 +55,7 @@ public abstract class CollectionManager {
             if(((Flat)i).getId() == id) flat = (Flat) i;
         }
         if(flat != null){
-            Flat f = FlatReader.readFlat(is);
+            Flat f = FlatReader.readFlat(is, null);
             flat.setName(f.getName());
             flat.setCoordinates(f.getCoordinates());
             flat.setArea(f.getArea());
@@ -133,7 +131,9 @@ public abstract class CollectionManager {
             }
         } catch (NoSuchElementException e){
             System.out.println("Ошибка в содержании файла");
+            return;
         }
+        System.out.println("Скрипт выполнен");
     }
 
     public static void exit(MyCollection o, InputStream is, String[] arg){
@@ -143,7 +143,7 @@ public abstract class CollectionManager {
 
     public static void addIfMin(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
-        Flat flat = FlatReader.readFlat(is);
+        Flat flat = FlatReader.readFlat(is, o);
         try {
             if (((Flat)o.first()).compareTo(flat) > 0) {
                 aadWithOutput(o, flat);
@@ -155,7 +155,7 @@ public abstract class CollectionManager {
 
     public static void removeGreater(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
-        Flat f = FlatReader.readFlat(is);
+        Flat f = FlatReader.readFlat(is, null);
         TreeSet<Flat> buffer = new TreeSet<>();
         for (Object i : o) if (((Flat)i).compareTo(f) > 0) buffer.add((Flat) i);
         if(!buffer.isEmpty()){
@@ -165,7 +165,7 @@ public abstract class CollectionManager {
 
     public static void removeLower(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
-        Flat f = FlatReader.readFlat(is);
+        Flat f = FlatReader.readFlat(is, null);
         TreeSet<Flat> buffer = new TreeSet<>();
         for (Object i : o) if (((Flat)i).compareTo(f) < 0) buffer.add((Flat) i);
         if(!buffer.isEmpty()){

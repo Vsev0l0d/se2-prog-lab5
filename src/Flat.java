@@ -11,10 +11,9 @@ public class Flat implements Comparable<Flat>{
     private View view;
     private Transport transport;
     private House house;
-    private static int counterId = 1;
 
-    public Flat(String name, Coordinates coordinates, long area, Long numberOfRooms, Furnish furnish, View view, Transport transport, House house) {
-        this.id = counterId++;
+    public Flat(String name, Coordinates coordinates, long area, Long numberOfRooms, Furnish furnish, View view, Transport transport, House house, MyCollection owner) {
+        this.id = IdGenerator.generateId(owner);
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = LocalDate.now();

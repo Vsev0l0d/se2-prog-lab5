@@ -2,7 +2,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public abstract class FlatReader {
-    public static Flat readFlat(InputStream is){
+    public static Flat readFlat(InputStream is, MyCollection owner){
         String name = nameCheckingReader("Введите название квартиры: ", is);
         Long x = numberCheckingReader("Введите подъезд: ", is);
         long y = numberCheckingReader("Введите этаж: ", is);
@@ -12,9 +12,9 @@ public abstract class FlatReader {
         View view = viewCheckingReader("Введите вид из квартиры (PARK, NORMAL, GOOD, TERRIBLE): ", is);
         Transport transport = transportCheckingReader("Введите транспот (FEW, NONE, LITTLE, NORMAL, ENOUGH): ", is);;
         String nameHouse = nameCheckingReader("Введите название дома: ", is);
-        Long yearHouse = numberCheckingReader("Ввeдите год построки дома: ", is);
+        Long yearHouse = numberCheckingReader("Введите год построки дома: ", is);
         Long numberOfFlatsOnFloor = numberCheckingReader("Введите количество квартир на этаже: ", is);
-        return new Flat(name, new Coordinates(x,y), area, numberOfRooms, furnish, view, transport, new House(nameHouse, yearHouse, numberOfFlatsOnFloor));
+        return new Flat(name, new Coordinates(x,y), area, numberOfRooms, furnish, view, transport, new House(nameHouse, yearHouse, numberOfFlatsOnFloor), owner);
     }
 
     public static long numberCheckingReader(String request, InputStream is){
