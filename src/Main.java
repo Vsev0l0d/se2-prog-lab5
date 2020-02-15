@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         MyCollection collection = new MyCollection();
-        BankCommand bankTeams = new BankCommand();
+        BankCommand bankCommand = new BankCommand();
         Scanner sc = new Scanner(System.in);
 
         while (sc.hasNext()){
@@ -14,8 +14,8 @@ public class Main {
             String command = arguments[0];
             arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
-            if (bankTeams.commandMap.get(command) != null){
-                bankTeams.commandMap.get(command).accept(collection, System.in, arguments);
+            if (bankCommand.commandMap.get(command) != null){
+                bankCommand.commandMap.get(command).accept(collection, System.in, arguments);
             } else {
                 System.out.println("я не знаю такой команды, воспользуйтесь командой help");
             }

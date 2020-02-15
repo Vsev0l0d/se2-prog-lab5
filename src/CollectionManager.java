@@ -113,7 +113,7 @@ public abstract class CollectionManager {
             return;
         }
         Scanner sc = new Scanner(f);
-        BankCommand bankTeams = new BankCommand();
+        BankCommand bankCommand = new BankCommand();
         try {
             while (sc.hasNextLine()){
                 String[] arguments = sc.nextLine().trim().split(" ");
@@ -122,8 +122,8 @@ public abstract class CollectionManager {
                 String command = arguments[0];
                 arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
-                if (bankTeams.commandMap.get(command) != null){
-                    bankTeams.commandMap.get(command).accept(o, f, arguments);
+                if (bankCommand.commandMap.get(command) != null){
+                    bankCommand.commandMap.get(command).accept(o, f, arguments);
                 } else {
                     System.out.println("Ошибка в содержании файла");
                     return;
