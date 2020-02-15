@@ -1,8 +1,25 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+    private static File workFile;
     public static void main(String[] args){
+        if (args.length < 1) {
+            System.out.println("Вы не ввели полное имя файла, коллекция не будет загруженна в программу, так же вы не сможете ее сохранить");
+        } else {
+            String fileName = args[0];
+            FileInputStream f;
+            try {
+                workFile = new File(fileName);
+                f = new FileInputStream(workFile);
+            } catch (FileNotFoundException e){
+                System.out.println("Файл не найден или не хватает прав для его чтения, коллекция не будет загруженна в программу, так же вы не сможете ее сохранить");
+            }
+        }
+
         MyCollection collection = new MyCollection();
         BankCommand bankCommand = new BankCommand();
         Scanner sc = new Scanner(System.in);
@@ -21,5 +38,9 @@ public class Main {
             }
 
         }
+    }
+
+    public static File getWorkFile() {
+        return workFile;
     }
 }
