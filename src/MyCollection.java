@@ -2,11 +2,14 @@ import java.time.LocalDate;
 import java.util.TreeSet;
 
 public class MyCollection extends TreeSet{
-    private TreeSet<Flat> flats = new TreeSet();
     private java.time.LocalDate creationDate;
 
     public MyCollection() {
         this.creationDate = LocalDate.now();
+    }
+
+    public MyCollection(java.time.LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
     public LocalDate getCreationDate() {
@@ -14,7 +17,7 @@ public class MyCollection extends TreeSet{
     }
 
     public Class<?> getTypeCollection(){
-        return flats.getClass();
+        return super.getClass().getSuperclass();
     }
 
     public void display(Flat flat) {
