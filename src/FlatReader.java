@@ -2,7 +2,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public abstract class FlatReader {
-    private static String[] forbiddenSubstrings = {"}"};
+    private static String[] forbiddenSubstrings = {"}", ",", ":", "]", "\""};
 
     public static Flat readFlat(InputStream is, MyCollection owner){
         String name = nameCheckingReader("Введите название квартиры: ", is);
