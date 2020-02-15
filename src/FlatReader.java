@@ -2,6 +2,8 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public abstract class FlatReader {
+    private static String[] forbiddenSubstrings = {"}"};
+
     public static Flat readFlat(InputStream is, MyCollection owner){
         String name = nameCheckingReader("Введите название квартиры: ", is);
         Long x = numberCheckingReader("Введите подъезд: ", is);
@@ -101,10 +103,12 @@ public abstract class FlatReader {
         while (!resultOfChecking){
             o = sc.nextLine().trim();
             if (!o.equals("")) {
-                resultOfChecking = true;
-            } else {
-                System.out.println("Вы должны ввести не пустую строку, попробуйте еще раз");
-            }
+                for (String s : forbiddenSubstrings){
+                    if (!o.contains(s)){
+                        resultOfChecking = true;
+                    } else System.out.println("Вы использовали запрещенную строку или символ, попробуйте еще раз");
+                }
+            } else System.out.println("Вы должны ввести не пустую строку, попробуйте еще раз");
         }
 
         return o;
