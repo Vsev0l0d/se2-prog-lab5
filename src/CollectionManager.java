@@ -35,7 +35,8 @@ public abstract class CollectionManager {
 
     public static void add(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
-       aadWithOutput(o, FlatReader.readFlat(is, o));
+        aadWithOutput(o, FlatReader.readFlat(is, o));
+        System.out.println(ParserJson.parseFromCollectionToFromJsonString(o));
     }
 
     public static void update(MyCollection o, InputStream is, String[] arg){

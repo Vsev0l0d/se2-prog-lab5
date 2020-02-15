@@ -19,7 +19,7 @@ public class Main {
                 System.out.println("Файл не найден или не хватает прав для его чтения, коллекция не будет загруженна в программу, так же вы не сможете ее сохранить");
             }
         }
-
+//        MyCollection collection = ParserJson.parseFromJsonStringToCollection("[{\"id\":745736232,\"name\":\"1\",\"coordinates\":{\"x\":1,\"y\":1},\"creationDate\":{\"year\":2020,\"month\":2,\"day\":15},\"area\":1,\"numberOfRooms\":1,\"furnish\":\"BAD\",\"view\":null,\"transport\":null,\"house\":{\"name\":\"1\",\"year\":1,\"numberOfFlatsOnFloor\":1}}]");
         MyCollection collection = new MyCollection();
         BankCommand bankCommand = new BankCommand();
         Scanner sc = new Scanner(System.in);
