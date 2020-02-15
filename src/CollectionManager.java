@@ -122,6 +122,11 @@ public abstract class CollectionManager {
                 String command = arguments[0];
                 arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
+                if (command.equals("execute_script") && arguments[0].equals(fileName)){
+                    System.out.println("Ваш скипт вызывает сам себя, он никогда не закончит выполнение");
+                    return;
+                }
+
                 if (bankCommand.commandMap.get(command) != null){
                     bankCommand.commandMap.get(command).accept(o, f, arguments);
                 } else {
