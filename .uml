@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="660.0" y="954.451171875">com</node>
+    <node x="537.0" y="837.0">netscape</node>
+    <node x="393.9126780626775" y="298.0">MyCollection</node>
+    <node x="810.0" y="954.451171875">sun</node>
+    <node x="468.4126780626775" y="397.0">MyConsumer</node>
+    <node x="279.41267806267757" y="397.0">ParserJson</node>
+    <node x="307.0" y="837.0">groovyjarjarasm</node>
+    <node x="503.0" y="954.451171875">java</node>
+    <node x="340.0" y="954.451171875">javax</node>
+    <node x="903.0" y="837.0">javafx</node>
+    <node x="346.8721509971507" y="565.0">BankCommand</node>
+    <node x="0.0" y="954.451171875">oracle</node>
+    <node x="960.0" y="954.451171875">org</node>
+    <node x="283.6001780626775" y="476.0">CollectionManager</node>
+    <node x="94.0" y="0.0">Furnish</node>
+    <node x="743.8055555555554" y="0.0">Coordinates</node>
+    <node x="290.68055555555543" y="0.0">House</node>
+    <node x="391.68055555555543" y="0.0">IdGenerator</node>
+    <node x="0.0" y="0.0">View</node>
+    <node x="720.0" y="837.0">META-INF</node>
+    <node x="0.0" y="1028.451171875">jdk</node>
+    <node x="170.0" y="954.451171875">groovy</node>
+    <node x="249.93823005697982" y="209.0">Flat</node>
+    <node x="30.0" y="850.451171875">groovyjarjarcommonscli</node>
+    <node x="615.8055555555554" y="0.0">Transport</node>
+    <node x="949.8055555555554" y="15.867838541666664">groovyjarjarantlr</node>
+    <node x="369.4583333333333" y="654.0">Main</node>
+    <node x="229.15833333333327" y="763.0">FlatReader</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="FlatReader" target="House">
+      <point x="-28.5" y="-14.5" />
+      <point x="257.6583333333333" y="723.0" />
+      <point x="199.49715099715064" y="723.0" />
+      <point x="199.49715099715064" y="89.0" />
+      <point x="304.18055555555543" y="89.0" />
+      <point x="-27.0" y="14.5" />
+    </edge>
+    <edge source="MyConsumer" target="MyCollection">
+      <point x="0.0" y="-14.5" />
+      <point x="525.4126780626775" y="377.0" />
+      <point x="472.1349002848998" y="377.0" />
+      <point x="14.222222222222229" y="14.5" />
+    </edge>
+    <edge source="ParserJson" target="MyCollection">
+      <point x="38.0" y="-14.5" />
+      <point x="374.41267806267757" y="377.0" />
+      <point x="415.2460113960109" y="377.0" />
+      <point x="-42.66666666666666" y="14.5" />
+    </edge>
+    <edge source="FlatReader" target="Transport">
+      <point x="39.89999999999998" y="-14.5" />
+      <point x="326.0583333333333" y="733.0" />
+      <point x="662.6882300569798" y="733.0" />
+      <point x="662.6882300569798" y="159.0" />
+      <point x="705.8055555555554" y="159.0" />
+      <point x="36.0" y="14.5" />
+    </edge>
+    <edge source="ParserJson" target="Flat">
+      <point x="-38.0" y="-14.5" />
+      <point x="298.41267806267757" y="377.0" />
+      <point x="299.43465099715064" y="377.0" />
+      <point x="299.43465099715064" y="278.0" />
+      <point x="293.10489672364645" y="278.0" />
+      <point x="6.166666666666629" y="14.5" />
+    </edge>
+    <edge source="BankCommand" target="MyCollection">
+      <point x="24.19999999999999" y="-14.5" />
+      <point x="431.57215099715063" y="535.0" />
+      <point x="457.9126780626775" y="535.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="FlatReader" target="Coordinates">
+      <point x="51.299999999999955" y="-14.5" />
+      <point x="337.45833333333326" y="743.0" />
+      <point x="737.6048967236464" y="743.0" />
+      <point x="737.6048967236464" y="189.0" />
+      <point x="844.6388888888888" y="189.0" />
+      <point x="40.33333333333337" y="14.5" />
+    </edge>
+    <edge source="Flat" target="MyCollection">
+      <point x="30.83333333333337" y="14.5" />
+      <point x="317.7715633903132" y="268.0" />
+      <point x="457.9126780626775" y="268.0" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="FlatReader" target="View">
+      <point x="-51.30000000000007" y="-14.5" />
+      <point x="234.8583333333332" y="743.0" />
+      <point x="120.03694800569781" y="743.0" />
+      <point x="120.03694800569781" y="189.0" />
+      <point x="12.333333333333371" y="189.0" />
+      <point x="-24.66666666666663" y="14.5" />
+    </edge>
+    <edge source="Main" target="ParserJson">
+      <point x="-30.833333333333343" y="-14.5" />
+      <point x="375.625" y="634.0" />
+      <point x="273.10017806267757" y="634.0" />
+      <point x="273.10017806267757" y="456.0" />
+      <point x="307.91267806267757" y="456.0" />
+      <point x="-28.5" y="14.5" />
+    </edge>
+    <edge source="Main" target="BankCommand">
+      <point x="-6.166666666666686" y="-14.5" />
+      <point x="400.29166666666663" y="614.0" />
+      <point x="377.1221509971507" y="614.0" />
+      <point x="-30.25" y="14.5" />
+    </edge>
+    <edge source="Flat" target="Transport">
+      <point x="15.416666666666629" y="-14.5" />
+      <point x="302.35489672364645" y="139.0" />
+      <point x="633.8055555555554" y="139.0" />
+      <point x="-36.0" y="14.5" />
+    </edge>
+    <edge source="CollectionManager" target="FlatReader">
+      <point x="-64.4" y="14.5" />
+      <point x="299.70017806267754" y="545.0" />
+      <point x="324.45833333333326" y="545.0" />
+      <point x="324.45833333333326" y="703.0" />
+      <point x="291.85833333333335" y="703.0" />
+      <point x="5.7000000000000455" y="-14.5" />
+    </edge>
+    <edge source="CollectionManager" target="Main">
+      <point x="-32.19999999999999" y="14.5" />
+      <point x="331.9001780626776" y="545.0" />
+      <point x="335.45833333333326" y="545.0" />
+      <point x="335.45833333333326" y="624.0" />
+      <point x="387.9583333333333" y="624.0" />
+      <point x="-18.5" y="-14.5" />
+    </edge>
+    <edge source="CollectionManager" target="Flat">
+      <point x="-60.375" y="-14.5" />
+      <point x="303.7251780626775" y="446.0" />
+      <point x="268.91267806267757" y="446.0" />
+      <point x="268.91267806267757" y="278.0" />
+      <point x="280.77156339031313" y="278.0" />
+      <point x="-6.166666666666686" y="14.5" />
+    </edge>
+    <edge source="BankCommand" target="CollectionManager">
+      <point x="-48.40000000000002" y="-14.5" />
+      <point x="358.97215099715066" y="545.0" />
+      <point x="364.1001780626775" y="545.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="Flat" target="Furnish">
+      <point x="-21.58333333333337" y="-14.5" />
+      <point x="265.35489672364645" y="59.0" />
+      <point x="141.0" y="59.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="FlatReader" target="Furnish">
+      <point x="-39.900000000000034" y="-14.5" />
+      <point x="246.25833333333324" y="733.0" />
+      <point x="174.2036146723644" y="733.0" />
+      <point x="174.2036146723644" y="179.0" />
+      <point x="109.66666666666663" y="179.0" />
+      <point x="-31.33333333333337" y="14.5" />
+    </edge>
+    <edge source="groovyjarjarcommonscli" target="groovyjarjarcommonscli">
+      <point x="58.0" y="14.5" />
+      <point x="204.0" y="909.451171875" />
+      <point x="0.0" y="909.451171875" />
+      <point x="0.0" y="857.701171875" />
+      <point x="-116.0" y="-7.25" />
+    </edge>
+    <edge source="Flat" target="IdGenerator">
+      <point x="3.0833333333333144" y="-14.5" />
+      <point x="290.02156339031313" y="119.0" />
+      <point x="411.8472222222221" y="119.0" />
+      <point x="-40.33333333333334" y="14.5" />
+    </edge>
+    <edge source="FlatReader" target="Main">
+      <point x="17.100000000000023" y="-14.5" />
+      <point x="303.2583333333333" y="713.0" />
+      <point x="406.4583333333333" y="713.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="MyCollection" target="Flat">
+      <point x="-42.66666666666666" y="-14.5" />
+      <point x="415.2460113960109" y="278.0" />
+      <point x="305.4382300569798" y="278.0" />
+      <point x="18.5" y="14.5" />
+    </edge>
+    <edge source="IdGenerator" target="MyCollection">
+      <point x="40.333333333333314" y="14.5" />
+      <point x="492.5138888888888" y="129.0" />
+      <point x="500.5793447293442" y="129.0" />
+      <point x="42.66666666666666" y="-14.5" />
+    </edge>
+    <edge source="FlatReader" target="MyCollection">
+      <point x="28.5" y="-14.5" />
+      <point x="314.6583333333333" y="723.0" />
+      <point x="617.7460113960109" y="723.0" />
+      <point x="617.7460113960109" y="347.0" />
+      <point x="514.8015669515664" y="347.0" />
+      <point x="56.888888888888914" y="14.5" />
+    </edge>
+    <edge source="FlatReader" target="Flat">
+      <point x="-5.7000000000000455" y="-14.5" />
+      <point x="280.45833333333326" y="703.0" />
+      <point x="242.60017806267757" y="703.0" />
+      <point x="242.60017806267757" y="268.0" />
+      <point x="268.4382300569798" y="268.0" />
+      <point x="-18.5" y="14.5" />
+    </edge>
+    <edge source="groovyjarjarantlr" target="groovyjarjarantlr">
+      <point x="0.0" y="14.5" />
+      <point x="1048.8055555555554" y="74.86783854166666" />
+      <point x="919.8055555555554" y="74.86783854166666" />
+      <point x="919.8055555555554" y="30.367838541666664" />
+      <point x="-99.0" y="-0.0" />
+    </edge>
+    <edge source="Main" target="MyCollection">
+      <point x="30.833333333333343" y="-14.5" />
+      <point x="437.29166666666663" y="634.0" />
+      <point x="603.9126780626775" y="634.0" />
+      <point x="603.9126780626775" y="357.0" />
+      <point x="500.57934472934426" y="357.0" />
+      <point x="42.666666666666686" y="14.5" />
+    </edge>
+    <edge source="CollectionManager" target="BankCommand">
+      <point x="32.19999999999999" y="14.5" />
+      <point x="396.30017806267756" y="545.0" />
+      <point x="383.17215099715065" y="545.0" />
+      <point x="-24.200000000000017" y="-14.5" />
+    </edge>
+    <edge source="CollectionManager" target="ParserJson">
+      <point x="-20.125" y="-14.5" />
+      <point x="343.9751780626775" y="456.0" />
+      <point x="364.91267806267757" y="456.0" />
+      <point x="28.5" y="14.5" />
+    </edge>
+    <edge source="IdGenerator" target="Flat">
+      <point x="0.0" y="14.5" />
+      <point x="452.18055555555543" y="129.0" />
+      <point x="296.1882300569798" y="129.0" />
+      <point x="9.25" y="-14.5" />
+    </edge>
+    <edge source="Flat" target="Coordinates">
+      <point x="33.91666666666663" y="-14.5" />
+      <point x="320.85489672364645" y="179.0" />
+      <point x="804.3055555555554" y="179.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="Flat" target="House">
+      <point x="-9.25" y="-14.5" />
+      <point x="277.6882300569798" y="99.0" />
+      <point x="331.18055555555543" y="99.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="CollectionManager" target="MyCollection">
+      <point x="60.375" y="-14.5" />
+      <point x="424.4751780626775" y="456.0" />
+      <point x="432.74715099715064" y="456.0" />
+      <point x="432.74715099715064" y="377.0" />
+      <point x="443.69045584045534" y="377.0" />
+      <point x="-14.222222222222229" y="14.5" />
+    </edge>
+    <edge source="BankCommand" target="MyConsumer">
+      <point x="48.400000000000006" y="-14.5" />
+      <point x="455.7721509971507" y="545.0" />
+      <point x="525.4126780626775" y="545.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="Flat" target="View">
+      <point x="-27.75" y="-14.5" />
+      <point x="259.1882300569798" y="69.0" />
+      <point x="61.66666666666663" y="69.0" />
+      <point x="24.66666666666663" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4972170686456401" x="574.0" y="529.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
