@@ -20,7 +20,7 @@ public abstract class CollectionManager {
     public static void info(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         System.out.println("Тип коллекции: " + o.getTypeCollection().getName());
-        System.out.println("Дата инициализации коллекции: " + o.getCreationDate());
+        System.out.println("Дата инициализации коллекции: " + o.getCollectionCreationDate());
         System.out.println("Количество элементов коллекции: " + o.size());
     }
 
@@ -36,7 +36,6 @@ public abstract class CollectionManager {
     public static void add(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         aadWithOutput(o, FlatReader.readFlat(is, o));
-//        System.out.println(ParserJson.parseFromCollectionToFromJsonString(o));
     }
 
     public static void update(MyCollection o, InputStream is, String[] arg){
@@ -96,7 +95,21 @@ public abstract class CollectionManager {
     }
 
     public static void save(MyCollection o, InputStream is, String[] arg){
-//        if(checksForExtraArguments(arg)) return;
+        if(checksForExtraArguments(arg)) return;
+        if (Main.getWorkFile() == null){
+            System.out.println("Не задан файл для сохранения\n");
+            return;
+        }
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(Main.getWorkFile());
+            byte[] buffer = ParserJson.parseFromCollectionToFromJsonString(o).getBytes();
+            fileOutputStream.write(buffer, 0, buffer.length);
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+            return;
+        }
+        System.out.println("Сохранение завершено\n");
     }
 
     public static void executeScript(MyCollection o, InputStream is, String[] arg){ // не работает

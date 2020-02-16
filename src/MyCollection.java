@@ -2,18 +2,18 @@ import java.time.LocalDate;
 import java.util.TreeSet;
 
 public class MyCollection extends TreeSet{
-    private java.time.LocalDate creationDate;
+    private java.time.LocalDate collectionCreationDate;
 
     public MyCollection() {
-        this.creationDate = LocalDate.now();
+        this.collectionCreationDate = LocalDate.now();
     }
 
-    public MyCollection(java.time.LocalDate creationDate) {
-        this.creationDate = creationDate;
+    public LocalDate getCollectionCreationDate() {
+        return collectionCreationDate;
     }
 
-    public LocalDate getCreationDate() {
-        return creationDate;
+    public void setCollectionCreationDate(LocalDate collectionCreationDate) {
+        this.collectionCreationDate = collectionCreationDate;
     }
 
     public Class<?> getTypeCollection(){

@@ -1,26 +1,49 @@
+import com.google.gson.JsonSyntaxException;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    private static File workFile;
+    private static File workFile = new File(System.getProperty("user.dir")+"\\WorkFile");
     public static void main(String[] args){
-        if (args.length < 1) {
-            System.out.println("Вы не ввели полное имя файла, коллекция не будет загруженна в программу, так же вы не сможете ее сохранить");
-        } else {
-            String fileName = args[0];
-            FileInputStream f;
+        FileInputStream f = null;
+        String workFilePath = System.getenv("WORK_FILE_PATH");
+
+        if (workFilePath == null) {
+            System.out.println("Вы не задали значение переменной окружения, коллекция будет загруженна из default файла, и сохранена в него же");
             try {
-                workFile = new File(fileName);
                 f = new FileInputStream(workFile);
             } catch (FileNotFoundException e){
-                System.out.println("Файл не найден или не хватает прав для его чтения, коллекция не будет загруженна в программу, так же вы не сможете ее сохранить");
+                System.out.println("Проблеммы с default файлом, коллекция не будет загруженна");
+            }
+        } else {
+            try {
+                workFile = new File(workFilePath);
+                f = new FileInputStream(workFile);
+            } catch (FileNotFoundException e){
+                System.out.println("Файл не найден или не хватает прав для его чтения, коллекция не будет загруженна в программу, но вы сможете ее сохранить, если есть права на запись, если файла не существует, он будет создан");
             }
         }
-//        MyCollection collection = ParserJson.parseFromJsonStringToCollection("[{\"id\":745736232,\"name\":\"1\",\"coordinates\":{\"x\":1,\"y\":1},\"creationDate\":{\"year\":2020,\"month\":2,\"day\":15},\"area\":1,\"numberOfRooms\":1,\"furnish\":\"BAD\",\"view\":null,\"transport\":null,\"house\":{\"name\":\"1\",\"year\":1,\"numberOfFlatsOnFloor\":1}}]");
+
+//        MyCollection collection;
+//        if (f != null){
+//            try {
+//                collection = ParserJson.parseFromJsonToCollection(f);
+//            } catch (IOException | JsonSyntaxException e) {
+//                System.out.println("Ошибка при загрузке коллекции: " + e);
+//                collection = new MyCollection();
+//                System.out.println("Создана новая пустая коллекция\n");
+//            }
+//        } else {
+//            collection = new MyCollection();
+//            System.out.println("Создана новая пустая коллекция\n");
+//        }
         MyCollection collection = new MyCollection();
+
         BankCommand bankCommand = new BankCommand();
         Scanner sc = new Scanner(System.in);
 
@@ -36,7 +59,6 @@ public class Main {
             } else {
                 System.out.println("я не знаю такой команды, воспользуйтесь командой help");
             }
-
         }
     }
 
