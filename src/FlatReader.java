@@ -4,7 +4,7 @@ import java.util.Scanner;
  * считывает и валидирует составной тип данных Flat, и составные типы данных содержащиеся во Flat
  */
 public abstract class FlatReader {
-    private static String[] forbiddenSubstrings = {"}", ",", ":", "]", "\"", "\\", "'"};
+    private static String[] forbiddenSubstrings = {"}", ",", ":", "]", "\"", "\\", "'", "/"};
     private static boolean errorFound = false;
 
     public static Flat readFlat(Scanner sc, MyCollection owner){
@@ -89,7 +89,6 @@ public abstract class FlatReader {
                     return Furnish.BAD;
                 }
                 System.out.println("не корректный ответ, воспользуйтесь списком в скобках");
-                System.out.println("если хотите оставить поле пустым, нажмите Enter");
             }
         }
         return o;

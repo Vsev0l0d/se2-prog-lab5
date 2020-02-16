@@ -6,19 +6,15 @@ import java.util.*;
  * основной класс, содержит метод main для запуска программы
  */
 public class Main {
-    private static File workFile = new File(System.getProperty("user.dir")+"\\WorkFile");
+    private static File workFile = null;
     private static boolean scriptRunning = false;
     public static void main(String[] args){
         FileInputStream f = null;
         String workFilePath = System.getenv("WORK_FILE_PATH");
 
         if (workFilePath == null) {
-            System.out.println("Вы не задали значение переменной окружения, коллекция будет загруженна из default файла, и сохранена в него же");
-            try {
-                f = new FileInputStream(workFile);
-            } catch (FileNotFoundException e){
-                System.out.println("Проблеммы с default файлом, коллекция не будет загруженна");
-            }
+            System.out.println("Вы не задали значение переменной окружения, коллекция не будет загруженна и не будет сохранена");
+            f = null;
         } else {
             try {
                 workFile = new File(workFilePath);
@@ -33,7 +29,7 @@ public class Main {
             try {
                 collection = ParserJson.parseFromJsonToCollection(f);
                 System.out.println("Коллекция загружена\n");
-            } catch (IOException | JsonSyntaxException e) {
+            } catch (IOException | java.lang.NullPointerException | JsonSyntaxException e) {
                 System.out.println("Ошибка при загрузке коллекции: " + e);
                 collection = new MyCollection();
                 System.out.println("Создана новая пустая коллекция\n");
