@@ -1,11 +1,7 @@
 import com.google.gson.*;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class ParserJson {
     private static GsonBuilder builder = new GsonBuilder();
