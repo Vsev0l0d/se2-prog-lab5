@@ -116,6 +116,7 @@ public abstract class CollectionManager {
     public static void clear(MyCollection o, Scanner sc, String[] arg) {
         if(checksForExtraArguments(arg)) return;
         o.clear();
+        System.out.println("Коллекция очищена\n");
     }
 
     /**
