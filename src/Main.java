@@ -53,7 +53,7 @@ public class Main {
             arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
             if (bankCommand.commandMap.get(command) != null){
-                bankCommand.commandMap.get(command).accept(collection, System.in, arguments);
+                bankCommand.commandMap.get(command).accept(collection, sc, arguments);
             } else {
                 System.out.println("я не знаю такой команды, воспользуйтесь командой help");
             }

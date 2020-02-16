@@ -9,7 +9,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды help
      */
-    public static void help(MyCollection o, InputStream is, String[] arg) {
+    public static void help(MyCollection o, Scanner sc, String[] arg) {
         if(checksForExtraArguments(arg)) return;
         try(FileReader reader = new FileReader(System.getProperty("user.dir")+"\\src\\HelpAboutCommand.txt"))
         {
@@ -26,7 +26,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды info
      */
-    public static void info(MyCollection o, InputStream is, String[] arg){
+    public static void info(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
         System.out.println("Тип коллекции: " + o.getTypeCollection().getName());
         System.out.println("Дата инициализации коллекции: " + o.getCollectionCreationDate());
@@ -36,7 +36,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды show
      */
-    public static void show(MyCollection o, InputStream is, String[] arg){
+    public static void show(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
         if (!o.isEmpty()){
             for (Object i : o){
@@ -48,15 +48,15 @@ public abstract class CollectionManager {
     /**
      *реализация команды add {element}
      */
-    public static void add(MyCollection o, InputStream is, String[] arg){
+    public static void add(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
-        aadWithOutput(o, FlatReader.readFlat(is, o));
+        aadWithOutput(o, FlatReader.readFlat(sc, o));
     }
 
     /**
      *реализация команды update id {element}
      */
-    public static void update(MyCollection o, InputStream is, String[] arg){
+    public static void update(MyCollection o, Scanner sc, String[] arg){
         if (arg.length < 1) {
             System.out.println("Нужен id");
             return;
@@ -73,7 +73,7 @@ public abstract class CollectionManager {
             if(((Flat)i).getId() == id) flat = (Flat) i;
         }
         if(flat != null){
-            Flat f = FlatReader.readFlat(is, null);
+            Flat f = FlatReader.readFlat(sc, null);
             flat.setName(f.getName());
             flat.setCoordinates(f.getCoordinates());
             flat.setArea(f.getArea());
@@ -89,7 +89,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды remove_by_id id
      */
-    public static void removeById(MyCollection o, InputStream is, String[] arg){
+    public static void removeById(MyCollection o, Scanner sc, String[] arg){
         if (arg.length < 1) {
             System.out.println("Нужен id");
             return;
@@ -113,7 +113,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды clear
      */
-    public static void clear(MyCollection o, InputStream is, String[] arg) {
+    public static void clear(MyCollection o, Scanner sc, String[] arg) {
         if(checksForExtraArguments(arg)) return;
         o.clear();
     }
@@ -121,7 +121,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды save
      */
-    public static void save(MyCollection o, InputStream is, String[] arg){
+    public static void save(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
         if (Main.getWorkFile() == null){
             System.out.println("Не задан файл для сохранения\n");
@@ -142,7 +142,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды execute_script file_name
      */
-    public static void executeScript(MyCollection o, InputStream is, String[] arg){ // не работает
+    public static void executeScript(MyCollection o, Scanner sc, String[] arg){
         if (arg.length < 1) {
             System.out.println("Нужно полное имя файла");
             return;
@@ -156,11 +156,11 @@ public abstract class CollectionManager {
             System.out.println("Файл не найден или не хватает прав для его чтения");
             return;
         }
-        Scanner sc = new Scanner(f);
+        Scanner scanner = new Scanner(f);
         BankCommand bankCommand = new BankCommand();
         try {
-            while (sc.hasNextLine()){
-                String[] arguments = sc.nextLine().trim().split(" ");
+            while (scanner.hasNextLine()){
+                String[] arguments = scanner.nextLine().trim().split(" ");
                 if (arguments.length == 0) continue;
                 if (arguments[0].equals("")) continue;
                 String command = arguments[0];
@@ -170,16 +170,15 @@ public abstract class CollectionManager {
                     System.out.println("\nВаш скипт вызывает сам себя, он никогда не закончит выполнение\n");
                     return;
                 }
-                File file = new File(fileName);
-                f = new FileInputStream(file);
+
                 if (bankCommand.commandMap.get(command) != null){
-                    bankCommand.commandMap.get(command).accept(o, f, arguments);
+                    bankCommand.commandMap.get(command).accept(o, scanner, arguments);
                 } else {
                     System.out.println("\nОшибка в содержании файла: " + command);
                     return;
                 }
             }
-        } catch (NoSuchElementException | FileNotFoundException e){
+        } catch (NoSuchElementException e){
             System.out.println("\nОшибка в содержании файла");
             return;
         }
@@ -189,7 +188,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды exit
      */
-    public static void exit(MyCollection o, InputStream is, String[] arg){
+    public static void exit(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
         System.exit(0);
     }
@@ -197,9 +196,9 @@ public abstract class CollectionManager {
     /**
      *реализация команды add_if_min {element}
      */
-    public static void addIfMin(MyCollection o, InputStream is, String[] arg){
+    public static void addIfMin(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
-        Flat flat = FlatReader.readFlat(is, o);
+        Flat flat = FlatReader.readFlat(sc, o);
         try {
             if (((Flat)o.first()).compareTo(flat) > 0) {
                 aadWithOutput(o, flat);
@@ -212,9 +211,9 @@ public abstract class CollectionManager {
     /**
      *реализация команды remove_greater {element}
      */
-    public static void removeGreater(MyCollection o, InputStream is, String[] arg){
+    public static void removeGreater(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
-        Flat f = FlatReader.readFlat(is, null);
+        Flat f = FlatReader.readFlat(sc, null);
         TreeSet<Flat> buffer = new TreeSet<>();
         for (Object i : o) if (((Flat)i).compareTo(f) > 0) buffer.add((Flat) i);
         if(!buffer.isEmpty()){
@@ -225,9 +224,9 @@ public abstract class CollectionManager {
     /**
      *реализация команды remove_lower {element}
      */
-    public static void removeLower(MyCollection o, InputStream is, String[] arg){
+    public static void removeLower(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
-        Flat f = FlatReader.readFlat(is, null);
+        Flat f = FlatReader.readFlat(sc, null);
         TreeSet<Flat> buffer = new TreeSet<>();
         for (Object i : o) if (((Flat)i).compareTo(f) < 0) buffer.add((Flat) i);
         if(!buffer.isEmpty()){
@@ -238,7 +237,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды group_counting_by_creation_date
      */
-    public static void groupCountingByCreationDate(MyCollection o, InputStream is, String[] arg){
+    public static void groupCountingByCreationDate(MyCollection o, Scanner sc, String[] arg){
         if(checksForExtraArguments(arg)) return;
         if (o.isEmpty()){
             System.out.println("Коллекция не содеждит элементов");
@@ -254,14 +253,14 @@ public abstract class CollectionManager {
         }
         for (Map.Entry<java.time.LocalDate, MyCollection> entry : groupMap.entrySet()){
             System.out.println("    Элементы созданные " + entry.getKey() + " :\n");
-            show(entry.getValue(), is, arg);
+            show(entry.getValue(), sc, arg);
         }
     }
 
     /**
      *реализация команды filter_contains_name name
      */
-    public static void filterContainsName(MyCollection o, InputStream is, String[] arg){
+    public static void filterContainsName(MyCollection o, Scanner sc, String[] arg){
         if (!o.isEmpty()){
             if (arg.length < 1) {
                 System.out.println("Нужна подстрока");
@@ -283,7 +282,7 @@ public abstract class CollectionManager {
     /**
      *реализация команды print_field_ascending_number_of_rooms numberOfRooms
      */
-    public static void printFieldAscendingNumberOfRooms(MyCollection o, InputStream is, String[] arg){
+    public static void printFieldAscendingNumberOfRooms(MyCollection o, Scanner sc, String[] arg){
         if (arg.length < 1) {
             System.out.println("Нужно значение numberOfRooms");
             return;

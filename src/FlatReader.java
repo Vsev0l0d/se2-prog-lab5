@@ -1,4 +1,3 @@
-import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -7,24 +6,23 @@ import java.util.Scanner;
 public abstract class FlatReader {
     private static String[] forbiddenSubstrings = {"}", ",", ":", "]", "\"", "\\", "'"};
 
-    public static Flat readFlat(InputStream is, MyCollection owner){
-        String name = nameCheckingReader("Введите название квартиры: ", is);
-        Long x = numberCheckingReader("Введите подъезд: ", is);
-        long y = numberCheckingReader("Введите этаж: ", is);
-        long area = numberCheckingReader("Введите площадь квартиры (в м^2): ", is);
-        Long numberOfRooms = numberCheckingReader("Введите количество комнат в квартире: ", is);
-        Furnish furnish = furnishCheckingReader("Введите отделку (DESIGNER, NONE, FINE, BAD, LITTLE): ", is);
-        View view = viewCheckingReader("Введите вид из квартиры (PARK, NORMAL, GOOD, TERRIBLE): ", is);
-        Transport transport = transportCheckingReader("Введите транспот (FEW, NONE, LITTLE, NORMAL, ENOUGH): ", is);;
-        String nameHouse = nameCheckingReader("Введите название дома: ", is);
-        Long yearHouse = numberCheckingReader("Введите год построки дома: ", is);
-        Long numberOfFlatsOnFloor = numberCheckingReader("Введите количество квартир на этаже: ", is);
+    public static Flat readFlat(Scanner sc, MyCollection owner){
+        String name = nameCheckingReader("Введите название квартиры: ", sc);
+        Long x = numberCheckingReader("Введите подъезд: ", sc);
+        long y = numberCheckingReader("Введите этаж: ", sc);
+        long area = numberCheckingReader("Введите площадь квартиры (в м^2): ", sc);
+        Long numberOfRooms = numberCheckingReader("Введите количество комнат в квартире: ", sc);
+        Furnish furnish = furnishCheckingReader("Введите отделку (DESIGNER, NONE, FINE, BAD, LITTLE): ", sc);
+        View view = viewCheckingReader("Введите вид из квартиры (PARK, NORMAL, GOOD, TERRIBLE): ", sc);
+        Transport transport = transportCheckingReader("Введите транспот (FEW, NONE, LITTLE, NORMAL, ENOUGH): ", sc);;
+        String nameHouse = nameCheckingReader("Введите название дома: ", sc);
+        Long yearHouse = numberCheckingReader("Введите год построки дома: ", sc);
+        Long numberOfFlatsOnFloor = numberCheckingReader("Введите количество квартир на этаже: ", sc);
         return new Flat(name, new Coordinates(x,y), area, numberOfRooms, furnish, view, transport, new House(nameHouse, yearHouse, numberOfFlatsOnFloor), owner);
     }
 
-    public static long numberCheckingReader(String request, InputStream is){
+    public static long numberCheckingReader(String request, Scanner sc){
         System.out.print(request);
-        Scanner sc = new Scanner(is);
         long o = 0;
         boolean resultOfChecking = false;
         while (!resultOfChecking){
@@ -43,9 +41,8 @@ public abstract class FlatReader {
         return o;
     }
 
-    public static Transport transportCheckingReader(String request, InputStream is){
+    public static Transport transportCheckingReader(String request, Scanner sc){
         System.out.print(request);
-        Scanner sc = new Scanner(is);
         Transport o = null;
         boolean resultOfChecking = false;
         while (!resultOfChecking){
@@ -62,9 +59,8 @@ public abstract class FlatReader {
         return o;
     }
 
-    public static Furnish furnishCheckingReader(String request, InputStream is){
+    public static Furnish furnishCheckingReader(String request, Scanner sc){
         System.out.print(request);
-        Scanner sc = new Scanner(is);
         Furnish o = null;
         boolean resultOfChecking = false;
         while (!resultOfChecking){
@@ -79,9 +75,8 @@ public abstract class FlatReader {
         return o;
     }
 
-    public static View viewCheckingReader(String request, InputStream is){
+    public static View viewCheckingReader(String request, Scanner sc){
         System.out.print(request);
-        Scanner sc = new Scanner(is);
         View o = null;
         boolean resultOfChecking = false;
         while (!resultOfChecking){
@@ -98,9 +93,8 @@ public abstract class FlatReader {
         return o;
     }
 
-    public static String nameCheckingReader(String request, InputStream is){
+    public static String nameCheckingReader(String request, Scanner sc){
         System.out.print(request);
-        Scanner sc = new Scanner(is);
         String o = "";
         boolean resultOfChecking = false;
         while (!resultOfChecking){
