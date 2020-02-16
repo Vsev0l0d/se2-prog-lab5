@@ -1,3 +1,6 @@
+/**
+ * базовый класс, отделка
+ */
 public enum Furnish {
     DESIGNER,
     NONE,

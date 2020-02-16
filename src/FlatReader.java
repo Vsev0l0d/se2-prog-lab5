@@ -1,6 +1,9 @@
 import java.io.InputStream;
 import java.util.Scanner;
 
+/**
+ * считывает и валидирует составной тип данных Flat, и составные типы данных содержащиеся во Flat
+ */
 public abstract class FlatReader {
     private static String[] forbiddenSubstrings = {"}", ",", ":", "]", "\"", "\\", "'"};
 

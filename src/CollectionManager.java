@@ -1,8 +1,14 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * класс с реалезацией всех команд
+ */
 public abstract class CollectionManager {
 
+    /**
+     *реализация команды help
+     */
     public static void help(MyCollection o, InputStream is, String[] arg) {
         if(checksForExtraArguments(arg)) return;
         try(FileReader reader = new FileReader(System.getProperty("user.dir")+"\\src\\HelpAboutCommand.txt"))
@@ -17,6 +23,9 @@ public abstract class CollectionManager {
         }
     }
 
+    /**
+     *реализация команды info
+     */
     public static void info(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         System.out.println("Тип коллекции: " + o.getTypeCollection().getName());
@@ -24,6 +33,9 @@ public abstract class CollectionManager {
         System.out.println("Количество элементов коллекции: " + o.size());
     }
 
+    /**
+     *реализация команды show
+     */
     public static void show(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         if (!o.isEmpty()){
@@ -33,11 +45,17 @@ public abstract class CollectionManager {
         } else System.out.println("Коллекция не содержит элементов");
     }
 
+    /**
+     *реализация команды add {element}
+     */
     public static void add(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         aadWithOutput(o, FlatReader.readFlat(is, o));
     }
 
+    /**
+     *реализация команды update id {element}
+     */
     public static void update(MyCollection o, InputStream is, String[] arg){
         if (arg.length < 1) {
             System.out.println("Нужен id");
@@ -68,6 +86,9 @@ public abstract class CollectionManager {
         } else System.out.println("Элемент с таким id не найден");
     }
 
+    /**
+     *реализация команды remove_by_id id
+     */
     public static void removeById(MyCollection o, InputStream is, String[] arg){
         if (arg.length < 1) {
             System.out.println("Нужен id");
@@ -89,11 +110,17 @@ public abstract class CollectionManager {
         } else System.out.println("Элемент с таким id не найден");
     }
 
+    /**
+     *реализация команды clear
+     */
     public static void clear(MyCollection o, InputStream is, String[] arg) {
         if(checksForExtraArguments(arg)) return;
         o.clear();
     }
 
+    /**
+     *реализация команды save
+     */
     public static void save(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         if (Main.getWorkFile() == null){
@@ -112,6 +139,9 @@ public abstract class CollectionManager {
         System.out.println("Сохранение завершено\n");
     }
 
+    /**
+     *реализация команды execute_script file_name
+     */
     public static void executeScript(MyCollection o, InputStream is, String[] arg){ // не работает
         if (arg.length < 1) {
             System.out.println("Нужно полное имя файла");
@@ -137,29 +167,36 @@ public abstract class CollectionManager {
                 arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
 
                 if (command.equals("execute_script") && arguments[0].equals(fileName)){
-                    System.out.println("Ваш скипт вызывает сам себя, он никогда не закончит выполнение");
+                    System.out.println("\nВаш скипт вызывает сам себя, он никогда не закончит выполнение\n");
                     return;
                 }
-
+                File file = new File(fileName);
+                f = new FileInputStream(file);
                 if (bankCommand.commandMap.get(command) != null){
                     bankCommand.commandMap.get(command).accept(o, f, arguments);
                 } else {
-                    System.out.println("Ошибка в содержании файла");
+                    System.out.println("\nОшибка в содержании файла: " + command);
                     return;
                 }
             }
-        } catch (NoSuchElementException e){
-            System.out.println("Ошибка в содержании файла");
+        } catch (NoSuchElementException | FileNotFoundException e){
+            System.out.println("\nОшибка в содержании файла");
             return;
         }
-        System.out.println("Скрипт выполнен");
+        System.out.println("\nСкрипт выполнен\n");
     }
 
+    /**
+     *реализация команды exit
+     */
     public static void exit(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         System.exit(0);
     }
 
+    /**
+     *реализация команды add_if_min {element}
+     */
     public static void addIfMin(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         Flat flat = FlatReader.readFlat(is, o);
@@ -172,6 +209,9 @@ public abstract class CollectionManager {
         }
     }
 
+    /**
+     *реализация команды remove_greater {element}
+     */
     public static void removeGreater(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         Flat f = FlatReader.readFlat(is, null);
@@ -182,6 +222,9 @@ public abstract class CollectionManager {
         } else System.out.println("\nЭлементов превышающие заданный не найдено\n");
     }
 
+    /**
+     *реализация команды remove_lower {element}
+     */
     public static void removeLower(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         Flat f = FlatReader.readFlat(is, null);
@@ -192,6 +235,9 @@ public abstract class CollectionManager {
         } else System.out.println("\nЭлементов меньшие, чем заданный не найдено\n");
     }
 
+    /**
+     *реализация команды group_counting_by_creation_date
+     */
     public static void groupCountingByCreationDate(MyCollection o, InputStream is, String[] arg){
         if(checksForExtraArguments(arg)) return;
         if (o.isEmpty()){
@@ -212,6 +258,9 @@ public abstract class CollectionManager {
         }
     }
 
+    /**
+     *реализация команды filter_contains_name name
+     */
     public static void filterContainsName(MyCollection o, InputStream is, String[] arg){
         if (!o.isEmpty()){
             if (arg.length < 1) {
@@ -231,6 +280,9 @@ public abstract class CollectionManager {
         } else System.out.println("Коллекция не содержит элементов");
     }
 
+    /**
+     *реализация команды print_field_ascending_number_of_rooms numberOfRooms
+     */
     public static void printFieldAscendingNumberOfRooms(MyCollection o, InputStream is, String[] arg){
         if (arg.length < 1) {
             System.out.println("Нужно значение numberOfRooms");

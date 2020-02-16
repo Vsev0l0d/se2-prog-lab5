@@ -17,3 +17,4 @@ print_field_ascending_number_of_rooms numberOfRooms : вывести значе�
 
 
 execute_script C:\Users\Vsevolod\IdeaProjects\lab5\Script
+

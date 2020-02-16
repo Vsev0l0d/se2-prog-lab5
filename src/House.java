@@ -1,3 +1,6 @@
+/**
+ * базовый класс, дом
+ */
 public class House {
     private String name;
     private Long year;

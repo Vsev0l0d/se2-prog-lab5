@@ -1,7 +1,13 @@
 import java.time.LocalDate;
 import java.util.TreeSet;
 
+/**
+ * свой тип коллекции, наследуется от TreeSet
+ */
 public class MyCollection extends TreeSet{
+    /**
+     * дата создания коллекции
+     */
     private java.time.LocalDate collectionCreationDate;
 
     public MyCollection() {

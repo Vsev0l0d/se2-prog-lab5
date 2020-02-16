@@ -2,6 +2,9 @@ import com.google.gson.JsonSyntaxException;
 import java.io.*;
 import java.util.*;
 
+/**
+ * основной класс, содержит метод main для запуска программы
+ */
 public class Main {
     private static File workFile = new File(System.getProperty("user.dir")+"\\WorkFile");
     public static void main(String[] args){
@@ -28,6 +31,7 @@ public class Main {
         if (f != null){
             try {
                 collection = ParserJson.parseFromJsonToCollection(f);
+                System.out.println("Коллекция загружена\n");
             } catch (IOException | JsonSyntaxException e) {
                 System.out.println("Ошибка при загрузке коллекции: " + e);
                 collection = new MyCollection();

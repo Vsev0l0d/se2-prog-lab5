@@ -1,3 +1,6 @@
+/**
+ * базовый класс, транспорт
+ */
 public enum Transport {
     FEW,
     NONE,

@@ -3,10 +3,18 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * вся работа с json
+ */
 public abstract class ParserJson {
     private static GsonBuilder builder = new GsonBuilder();
     private static Gson gson = builder.serializeNulls().setPrettyPrinting().create();
 
+    /**
+     * @param fileInputStream поток из json файла
+     * @return коллекцию типа MyCollection
+     * @see MyCollection
+     */
     public static MyCollection parseFromJsonToCollection(FileInputStream fileInputStream) throws IOException {
         MyCollection o = new MyCollection();
         int i=-1;
@@ -27,6 +35,11 @@ public abstract class ParserJson {
         return o;
     }
 
+    /**
+     * @param o коллекцию типа MyCollection
+     * @see MyCollection
+     * @return строку json
+     */
     public static String parseFromCollectionToFromJsonString(MyCollection o){
         List<Flat> list = new ArrayList<>();
         for (Object flat : o){

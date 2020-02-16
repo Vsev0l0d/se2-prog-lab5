@@ -1,5 +1,9 @@
 import java.time.LocalDate;
 
+/**
+ * базовый класс, коллекция хранит объекты этого класса
+ * реализует интерфейс  Comparable<Flat>, чтобы обьекты этого класса автоматически сравнивались при добавлении в коллекцию
+ */
 public class Flat implements Comparable<Flat>{
     private Integer id;
     private String name;

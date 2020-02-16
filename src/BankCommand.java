@@ -1,6 +1,9 @@
 import java.io.InputStream;
 import java.util.HashMap;
 
+/**
+ * хранилище команд, храниться имя команды и ссылка на метод, реализующий команду
+ */
 public class BankCommand {
     HashMap<String, MyConsumer<MyCollection, InputStream, String[]>> commandMap = new HashMap();
     public BankCommand(){

@@ -1,3 +1,6 @@
+/**
+ * базовый класс, хранит координаты
+ */
 public class Coordinates {
     private Long x;
     private long y;
