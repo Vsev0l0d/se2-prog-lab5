@@ -74,6 +74,10 @@ public abstract class CollectionManager {
         }
         if(flat != null){
             Flat f = FlatReader.readFlat(sc, null);
+            if (f == null){
+                System.out.println("Ошибка в веденных значениях, элемент не обновлен");
+                return;
+            }
             flat.setName(f.getName());
             flat.setCoordinates(f.getCoordinates());
             flat.setArea(f.getArea());
@@ -159,6 +163,7 @@ public abstract class CollectionManager {
         }
         Scanner scanner = new Scanner(f);
         BankCommand bankCommand = new BankCommand();
+        Main.setScriptRunning(true);
         try {
             while (scanner.hasNextLine()){
                 String[] arguments = scanner.nextLine().trim().split(" ");
@@ -169,6 +174,7 @@ public abstract class CollectionManager {
 
                 if (command.equals("execute_script") && arguments[0].equals(fileName)){
                     System.out.println("\nВаш скипт вызывает сам себя, он никогда не закончит выполнение\n");
+                    Main.setScriptRunning(false);
                     return;
                 }
 
@@ -176,14 +182,17 @@ public abstract class CollectionManager {
                     bankCommand.commandMap.get(command).accept(o, scanner, arguments);
                 } else {
                     System.out.println("\nОшибка в содержании файла: " + command);
+                    Main.setScriptRunning(false);
                     return;
                 }
             }
         } catch (NoSuchElementException e){
             System.out.println("\nОшибка в содержании файла");
+            Main.setScriptRunning(false);
             return;
         }
         System.out.println("\nСкрипт выполнен\n");
+        Main.setScriptRunning(false);
     }
 
     /**
@@ -312,20 +321,26 @@ public abstract class CollectionManager {
     }
 
     private static void aadWithOutput(MyCollection o, Flat flat){
-        boolean e = o.add(flat);
+        boolean e;
+        if (flat != null){
+            e = o.add(flat);
+        } else e = false;
         if (e){
             System.out.println("\nЭлемент успешно добавлен\n");
         } else {
-            System.out.println("\nТакой элемент уже есть\n");
+            System.out.println("\nЭлемент не добавлен\n");
         }
     }
 
     private static void removeWithOutput(MyCollection o, Flat flat){
-        boolean e = o.remove(flat);
+        boolean e;
+        if (flat != null){
+            e = o.remove(flat);
+        } else e = false;
         if (e){
             System.out.println("\nЭлемент успешно удален\n");
         } else {
-            System.out.println("\nЭлемент не найден\n");
+            System.out.println("\nЭлемент не удален\n");
         }
     }
 }

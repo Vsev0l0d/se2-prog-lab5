@@ -7,6 +7,7 @@ import java.util.*;
  */
 public class Main {
     private static File workFile = new File(System.getProperty("user.dir")+"\\WorkFile");
+    private static boolean scriptRunning = false;
     public static void main(String[] args){
         FileInputStream f = null;
         String workFilePath = System.getenv("WORK_FILE_PATH");
@@ -62,5 +63,13 @@ public class Main {
 
     public static File getWorkFile() {
         return workFile;
+    }
+
+    public static boolean isScriptRunning() {
+        return scriptRunning;
+    }
+
+    public static void setScriptRunning(boolean isScriptRunning) {
+        Main.scriptRunning = isScriptRunning;
     }
 }
