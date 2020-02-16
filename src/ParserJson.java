@@ -22,7 +22,8 @@ public abstract class ParserJson {
         map = (Map<String, List<Object>>) gson.fromJson(s.toString(), map.getClass());
         for (Map.Entry<String, List<Object>> entry : map.entrySet()) {
             o.setCollectionCreationDate(LocalDate.parse(entry.getKey()));
-            for (Object flat : entry.getValue()){
+            for (Object element : entry.getValue()){
+                Flat flat = gson.fromJson(element.toString(), Flat.class);
                 o.add(flat);
             }
         }

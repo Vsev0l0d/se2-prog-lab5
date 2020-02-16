@@ -29,20 +29,19 @@ public class Main {
             }
         }
 
-//        MyCollection collection;
-//        if (f != null){
-//            try {
-//                collection = ParserJson.parseFromJsonToCollection(f);
-//            } catch (IOException | JsonSyntaxException e) {
-//                System.out.println("Ошибка при загрузке коллекции: " + e);
-//                collection = new MyCollection();
-//                System.out.println("Создана новая пустая коллекция\n");
-//            }
-//        } else {
-//            collection = new MyCollection();
-//            System.out.println("Создана новая пустая коллекция\n");
-//        }
-        MyCollection collection = new MyCollection();
+        MyCollection collection;
+        if (f != null){
+            try {
+                collection = ParserJson.parseFromJsonToCollection(f);
+            } catch (IOException | JsonSyntaxException e) {
+                System.out.println("Ошибка при загрузке коллекции: " + e);
+                collection = new MyCollection();
+                System.out.println("Создана новая пустая коллекция\n");
+            }
+        } else {
+            collection = new MyCollection();
+            System.out.println("Создана новая пустая коллекция\n");
+        }
 
         BankCommand bankCommand = new BankCommand();
         Scanner sc = new Scanner(System.in);

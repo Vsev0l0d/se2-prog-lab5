@@ -1,5 +1,5 @@
 {
-  "2020-02-16": [
+  "2020-02-15": [
     {
       "id": 1049334542,
       "name": "1",
@@ -14,6 +14,29 @@
       },
       "area": 1,
       "numberOfRooms": 11,
+      "furnish": "BAD",
+      "view": null,
+      "transport": null,
+      "house": {
+        "name": "1",
+        "year": 1,
+        "numberOfFlatsOnFloor": 1
+      }
+    },
+    {
+      "id": 1111937617,
+      "name": "2",
+      "coordinates": {
+        "x": 2,
+        "y": 2
+      },
+      "creationDate": {
+        "year": 2020,
+        "month": 2,
+        "day": 16
+      },
+      "area": 2,
+      "numberOfRooms": 2,
       "furnish": "BAD",
       "view": null,
       "transport": null,
