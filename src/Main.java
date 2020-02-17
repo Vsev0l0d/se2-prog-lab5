@@ -36,11 +36,6 @@ public class Main {
                 System.out.println("Создана новая пустая коллекция\n");
             }
         } else {
-            try {
-                f.close();
-            } catch (IOException e) {
-                System.out.println(e);
-            }
             collection = new MyCollection();
             System.out.println("Создана новая пустая коллекция\n");
         }
