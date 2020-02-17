@@ -141,15 +141,18 @@ public abstract class CollectionManager {
             System.out.println("Не задан файл для сохранения\n");
             return;
         }
+
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(Main.getWorkFile());
-            byte[] buffer = ParserJson.parseFromCollectionToFromJsonString(o).getBytes();
-            fileOutputStream.write(buffer, 0, buffer.length);
-        }
-        catch(IOException ex){
+            FileOutputStream f = new FileOutputStream(Main.getWorkFile());
+            byte[] strToBytes = ParserJson.parseFromCollectionToFromJsonString(o).getBytes();
+            f.write(strToBytes);
+
+            f.close();
+        }catch(IOException ex){
             System.out.println(ex.getMessage());
             return;
         }
+
         System.out.println("Сохранение завершено\n");
     }
 

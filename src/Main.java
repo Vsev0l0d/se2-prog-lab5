@@ -29,12 +29,18 @@ public class Main {
             try {
                 collection = ParserJson.parseFromJsonToCollection(f);
                 System.out.println("Коллекция загружена\n");
-            } catch (IOException | java.lang.NullPointerException | JsonSyntaxException e) {
+                f.close();
+            } catch (IOException | java.lang.NullPointerException | java.time.format.DateTimeParseException | JsonSyntaxException e) {
                 System.out.println("Ошибка при загрузке коллекции: " + e);
                 collection = new MyCollection();
                 System.out.println("Создана новая пустая коллекция\n");
             }
         } else {
+            try {
+                f.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
             collection = new MyCollection();
             System.out.println("Создана новая пустая коллекция\n");
         }
